@@ -10,7 +10,6 @@
 		E4FB9B881C765E0600FE4AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9B871C765E0600FE4AD9 /* main.m */; };
 		E4FB9B8B1C765E0600FE4AD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9B8A1C765E0600FE4AD9 /* AppDelegate.m */; };
 		E4FB9B8E1C765E0600FE4AD9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */; };
-		E4FB9B911C765E0600FE4AD9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9B901C765E0600FE4AD9 /* DetailViewController.m */; };
 		E4FB9B941C765E0600FE4AD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9B921C765E0600FE4AD9 /* Main.storyboard */; };
 		E4FB9B961C765E0600FE4AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9B951C765E0600FE4AD9 /* Assets.xcassets */; };
 		E4FB9B991C765E0600FE4AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9B971C765E0600FE4AD9 /* LaunchScreen.storyboard */; };
@@ -44,8 +43,6 @@
 		E4FB9B8A1C765E0600FE4AD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E4FB9B8C1C765E0600FE4AD9 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		E4FB9B8F1C765E0600FE4AD9 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		E4FB9B901C765E0600FE4AD9 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		E4FB9B931C765E0600FE4AD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4FB9B951C765E0600FE4AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4FB9B981C765E0600FE4AD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,14 +112,12 @@
 				E4FB9B8A1C765E0600FE4AD9 /* AppDelegate.m */,
 				E4FB9B8C1C765E0600FE4AD9 /* MasterViewController.h */,
 				E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */,
-				E4FB9B8F1C765E0600FE4AD9 /* DetailViewController.h */,
-				E4FB9B901C765E0600FE4AD9 /* DetailViewController.m */,
+				E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */,
+				E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */,
 				E4FB9B921C765E0600FE4AD9 /* Main.storyboard */,
 				E4FB9B951C765E0600FE4AD9 /* Assets.xcassets */,
 				E4FB9B971C765E0600FE4AD9 /* LaunchScreen.storyboard */,
 				E4FB9B9A1C765E0600FE4AD9 /* Info.plist */,
-				E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */,
-				E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */,
 			);
 			path = SoundManager;
 			sourceTree = "<group>";
@@ -288,7 +283,6 @@
 				E4FB9B8E1C765E0600FE4AD9 /* MasterViewController.m in Sources */,
 				E4FB9B881C765E0600FE4AD9 /* main.m in Sources */,
 				E4FB9BF31C765F1600FE4AD9 /* SoundManager.m in Sources */,
-				E4FB9B911C765E0600FE4AD9 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

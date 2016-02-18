@@ -7,12 +7,11 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 #import "SoundManager.h"
 
 @interface MasterViewController ()
 
-@property (nonatomic, strong) NSArray *filenames;
+@property (nonatomic, weak) NSArray *filenames;
 
 @end
 
@@ -20,59 +19,61 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-//    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    [[SoundManager manager] availableSounds];
-    self.filenames = [[SoundManager manager] availableSounds];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopAudio:)];
+    
+    // let the manager know where to find the sound files we want loaded
+    [[SoundManager sharedManager] setSoundsDirectory:@"Sounds"];
+    self.filenames = [[SoundManager sharedManager] sounds];
+    
+    [[SoundManager sharedManager] preloadSounds:^{
+        // update cells to make interactive when preloading finishes
+        // TODO: update cells one-by-one as they become ready to play
+        [self.tableView reloadData];
+    }];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-//    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
-    [super viewWillAppear:animated];
-}
-
-#pragma mark - Segues
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-////        NSDate *object = self.objects[indexPath.row];
-//        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-////        [controller setDetailItem:object];
-//        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-//        controller.navigationItem.leftItemsSupplementBackButton = YES;
-//    }
-//}
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.filenames.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
+    // display the cell in black if the sound is preloaded and ready to play
+    if ([[SoundManager sharedManager] soundsPreloaded]) {
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    // otherwise, display the disabled color
+    // TODO: make the cells unresponsive to touch when sounds not loaded
+    else {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
+    
     cell.textLabel.text = self.filenames[[indexPath row]];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[SoundManager manager] playSound:[self.filenames objectAtIndex:[indexPath row]]];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[SoundManager sharedManager] playSound:[self.filenames objectAtIndex:[indexPath row]]];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return NO;
+}
+
+#pragma mark - Buttons
+
+- (void)stopAudio:(UIBarButtonItem *)button
+{
+    [[SoundManager sharedManager] stopAllSounds];
 }
 
 @end

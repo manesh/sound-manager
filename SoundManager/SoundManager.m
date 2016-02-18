@@ -19,20 +19,21 @@
 @property (nonatomic, strong) NSURL *soundsPath;
 
 /**
- Cached array of all sounds.
+ Dictionary of all audio players corresponding to the sound filenames.
  */
-@property (nonatomic, strong) NSArray *sounds;
+@property (nonatomic, strong) NSDictionary *audioPlayers;
 
 /**
- Shared audio player for all sounds.
+ Shared audio queue for all sounds.
  */
-@property (nonatomic, strong) AVAudioPlayer *player;
+@property (nonatomic, strong) AVQueuePlayer *queue;
 
 @end
 
 @implementation SoundManager
 
-+ (instancetype)manager {
++ (instancetype)sharedManager
+{
     static dispatch_once_t once;
     static id sharedInstance;
     dispatch_once(&once, ^{
@@ -41,25 +42,64 @@
     return sharedInstance;
 }
 
-- (NSArray *)availableSounds {
+- (void)preloadSounds:(void(^)())completionBlock
+{
+    // defensive programming: crash if this method is called without first calling setSoundsDirectory:
+    assert(self.sounds);
     
-    if (!self.sounds) {
-        // get a list of all sounds stored in the "Sounds" directory
-        NSURL *path = [[NSBundle mainBundle] bundleURL];
-        self.soundsPath = [path URLByAppendingPathComponent:@"Sounds"];
-        self.sounds = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.soundsPath error:nil];
-    }
-    
-    return self.sounds;
+    dispatch_queue_t backgroundQueue = dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    // load audio files on background queue
+    dispatch_async(backgroundQueue, ^{
+        NSMutableDictionary *audioPlayers = [[NSMutableDictionary alloc] initWithCapacity:[self.sounds count]];
+        
+        for (NSString *filename in self.sounds) {
+            NSURL *soundPath = [self.soundsPath URLByAppendingPathComponent:filename];
+            AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundPath error:nil];
+            
+            BOOL success = [player prepareToPlay];
+            
+            if (!success) {
+                // TODO: handle potential out-of-memory condition if too many audio files loaded
+            }
+            
+            [audioPlayers setObject:player forKey:filename];
+        }
+        
+        self.audioPlayers = [[NSDictionary alloc] initWithDictionary:audioPlayers];
+        
+        self.soundsPreloaded = YES;
+        
+        // dispatch back to main queue to update UI when finished
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completionBlock) {
+                completionBlock();
+            }
+        });
+        
+    });
+
 }
 
-- (void)playSound:(NSString *)filename {
-    NSURL *soundPath = [self.soundsPath URLByAppendingPathComponent:filename];
-    
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundPath
-                                                                   error:nil];
-    [self.player prepareToPlay];
-    [self.player play];
+- (void)setSoundsDirectory:(NSString *)directory
+{
+    // get a list of all sounds stored in the "Sounds" directory
+    NSURL *path = [[NSBundle mainBundle] bundleURL];
+    self.soundsPath = [path URLByAppendingPathComponent:directory];
+    self.sounds = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.soundsPath error:nil];
+}
+
+- (void)playSound:(NSString *)filename
+{
+    AVAudioPlayer *player = self.audioPlayers[filename];
+    [player play];
+}
+
+- (void)stopAllSounds {
+    NSArray *allPlayers = [self.audioPlayers allValues];
+    for (AVAudioPlayer *player in allPlayers) {
+        [player stop];
+    }
 }
 
 @end
