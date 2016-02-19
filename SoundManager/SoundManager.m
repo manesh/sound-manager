@@ -89,10 +89,42 @@
     self.sounds = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.soundsPath error:nil];
 }
 
+#pragma mark - Playing / stopping / getting info about sounds
+
 - (void)playSound:(NSString *)filename
 {
     AVAudioPlayer *player = self.audioPlayers[filename];
     [player play];
+}
+
+- (void)playSound:(NSString *)filename completion:(void (^)())completionBlock
+{
+    AVAudioPlayer *player = self.audioPlayers[filename];
+    
+    if (player.isPlaying) {
+        return; // do nothing if clip already playing
+    }
+
+    // fire completion block after the duration of the audio clip
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(player.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (completionBlock) {
+            completionBlock();
+        }
+    });
+    
+    [player play];
+}
+
+- (NSTimeInterval)soundDuration:(NSString *)filename
+{
+    AVAudioPlayer *player = self.audioPlayers[filename];
+    return player.duration;
+}
+
+- (BOOL)isSoundPlaying:(NSString *)filename
+{
+    AVAudioPlayer *player = self.audioPlayers[filename];
+    return player.isPlaying;
 }
 
 - (void)stopAllSounds {

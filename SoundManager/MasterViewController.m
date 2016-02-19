@@ -49,18 +49,40 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     // otherwise, display the disabled color
-    // TODO: make the cells unresponsive to touch when sounds not loaded
     else {
         cell.textLabel.textColor = [UIColor lightGrayColor];
     }
     
-    cell.textLabel.text = self.filenames[[indexPath row]];
+    // show a checkmark in the cell if the sound is currently playing
+    if ([[SoundManager sharedManager] isSoundPlaying:self.filenames[indexPath.row]]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
+    // display the cell's text
+    NSString *filename = self.filenames[indexPath.row];
+    NSTimeInterval duration = [[SoundManager sharedManager] soundDuration:filename];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.2f)", filename, duration];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[SoundManager sharedManager] playSound:[self.filenames objectAtIndex:[indexPath row]]];
+    // do not handle touch if sounds not yet preloaded
+    if (![[SoundManager sharedManager] soundsPreloaded]) {
+        return;
+    }
+    
+    // immediately display a checkmark in the selected cell to indicate it's started playing.
+    [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+    
+    [[SoundManager sharedManager] playSound:[self.filenames objectAtIndex:[indexPath row]] completion:^{
+    [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+    }];
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -74,6 +96,7 @@
 - (void)stopAudio:(UIBarButtonItem *)button
 {
     [[SoundManager sharedManager] stopAllSounds];
+    [self.tableView reloadData];
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 //  Simple class for managing sound effects. Allows you to preload all sound files in a directory
 //  into memory & play them.
+//
+//  Note: Playing the same sound multiple times simultaneously is not supported.
 
 #import <Foundation/Foundation.h>
 
@@ -43,6 +45,22 @@
  Plays the sound that corresponds to a filename. If the sound is already playing, nothing will happen.
  */
 - (void)playSound:(NSString *)filename;
+
+/**
+ Plays the sound that corresponds to a filename. If the sound is already playing, nothing will happen.
+ @param completionBlock The block to play when the sound finishes playing.
+ */
+- (void)playSound:(NSString *)filename completion:(void (^)())completionBlock;
+
+/**
+ @return The duration of the audio clip, in seconds.
+ */
+- (NSTimeInterval)soundDuration:(NSString *)filename;
+
+/**
+ @return YES is the sound is currently playing.
+ */
+- (BOOL)isSoundPlaying:(NSString *)filename;
 
 /**
  Stop all sounds from playing.
