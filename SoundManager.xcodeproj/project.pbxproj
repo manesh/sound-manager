@@ -112,17 +112,13 @@
 			isa = PBXGroup;
 			children = (
 				E4FB9C3B1C77C66300FE4AD9 /* images */,
+				E4FB9C411C77D5E400FE4AD9 /* Model */,
 				E4FB9BF41C7661B200FE4AD9 /* Sounds */,
 				E4FB9B861C765E0600FE4AD9 /* Supporting Files */,
+				E4FB9C421C77D61500FE4AD9 /* Views */,
+				E4FB9C401C77D5C500FE4AD9 /* ViewControllers */,
 				E4FB9B891C765E0600FE4AD9 /* AppDelegate.h */,
 				E4FB9B8A1C765E0600FE4AD9 /* AppDelegate.m */,
-				E4FB9B8C1C765E0600FE4AD9 /* MasterViewController.h */,
-				E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */,
-				E4FB9C351C77BAB400FE4AD9 /* PrettyViewController.h */,
-				E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */,
-				E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */,
-				E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */,
-				E4FB9B921C765E0600FE4AD9 /* Main.storyboard */,
 				E4FB9B951C765E0600FE4AD9 /* Assets.xcassets */,
 				E4FB9B971C765E0600FE4AD9 /* LaunchScreen.storyboard */,
 				E4FB9B9A1C765E0600FE4AD9 /* Info.plist */,
@@ -162,6 +158,34 @@
 				E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		E4FB9C401C77D5C500FE4AD9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4FB9B921C765E0600FE4AD9 /* Main.storyboard */,
+				E4FB9B8C1C765E0600FE4AD9 /* MasterViewController.h */,
+				E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */,
+				E4FB9C351C77BAB400FE4AD9 /* PrettyViewController.h */,
+				E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E4FB9C411C77D5E400FE4AD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */,
+				E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E4FB9C421C77D61500FE4AD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
