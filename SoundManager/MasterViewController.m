@@ -7,7 +7,9 @@
 //
 
 #import "MasterViewController.h"
+
 #import "SoundManager.h"
+#import "PrettyViewController.h"
 
 @interface MasterViewController ()
 
@@ -20,17 +22,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopAudio:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Pretty" style:UIBarButtonItemStylePlain target:self action:@selector(prettyInterface:)];
     
-    // let the manager know where to find the sound files we want loaded
-    [[SoundManager sharedManager] setSoundsDirectory:@"Sounds"];
-    self.filenames = [[SoundManager sharedManager] sounds];
-    
-    [[SoundManager sharedManager] preloadSounds:^{
-        // update cells to make interactive when preloading finishes
-        // TODO: update cells one-by-one as they become ready to play
-        [self.tableView reloadData];
-    }];
+    // load sounds if they are not loaded already
+    if (![[SoundManager sharedManager] soundsPreloaded])
+    {
+        // let the manager know where to find the sound files we want loaded
+        [[SoundManager sharedManager] setSoundsDirectory:@"Sounds"];
+        self.filenames = [[SoundManager sharedManager] sounds];
+        
+        [[SoundManager sharedManager] preloadSounds:^{
+            // update cells to make interactive when preloading finishes
+            // TODO: update cells one-by-one as they become ready to play
+            [self.tableView reloadData];
+        }];
+    }
 }
 
 #pragma mark - Table View
@@ -97,6 +105,12 @@
 {
     [[SoundManager sharedManager] stopAllSounds];
     [self.tableView reloadData];
+}
+
+- (void)prettyInterface:(UIBarButtonItem *)button
+{
+    PrettyViewController *viewController = [[PrettyViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    [self.navigationController setViewControllers:@[viewController] animated:NO];
 }
 
 @end

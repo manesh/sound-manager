@@ -17,6 +17,8 @@
 		E4FB9BAF1C765E0600FE4AD9 /* SoundManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9BAE1C765E0600FE4AD9 /* SoundManagerUITests.m */; };
 		E4FB9BF31C765F1600FE4AD9 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */; };
 		E4FB9BF51C7661B200FE4AD9 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9BF41C7661B200FE4AD9 /* Sounds */; };
+		E4FB9C371C77BAB400FE4AD9 /* PrettyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */; };
+		E4FB9C3F1C77C71E00FE4AD9 /* sound-manager-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		E4FB9BF41C7661B200FE4AD9 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		E4FB9C351C77BAB400FE4AD9 /* PrettyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyViewController.h; sourceTree = "<group>"; };
+		E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyViewController.m; sourceTree = "<group>"; };
+		E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sound-manager-logo@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,12 +111,15 @@
 		E4FB9B851C765E0600FE4AD9 /* SoundManager */ = {
 			isa = PBXGroup;
 			children = (
+				E4FB9C3B1C77C66300FE4AD9 /* images */,
 				E4FB9BF41C7661B200FE4AD9 /* Sounds */,
 				E4FB9B861C765E0600FE4AD9 /* Supporting Files */,
 				E4FB9B891C765E0600FE4AD9 /* AppDelegate.h */,
 				E4FB9B8A1C765E0600FE4AD9 /* AppDelegate.m */,
 				E4FB9B8C1C765E0600FE4AD9 /* MasterViewController.h */,
 				E4FB9B8D1C765E0600FE4AD9 /* MasterViewController.m */,
+				E4FB9C351C77BAB400FE4AD9 /* PrettyViewController.h */,
+				E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */,
 				E4FB9BF11C765F1600FE4AD9 /* SoundManager.h */,
 				E4FB9BF21C765F1600FE4AD9 /* SoundManager.m */,
 				E4FB9B921C765E0600FE4AD9 /* Main.storyboard */,
@@ -146,6 +154,14 @@
 				E4FB9BB01C765E0600FE4AD9 /* Info.plist */,
 			);
 			path = SoundManagerUITests;
+			sourceTree = "<group>";
+		};
+		E4FB9C3B1C77C66300FE4AD9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FB9B991C765E0600FE4AD9 /* LaunchScreen.storyboard in Resources */,
+				E4FB9C3F1C77C71E00FE4AD9 /* sound-manager-logo@2x.png in Resources */,
 				E4FB9B961C765E0600FE4AD9 /* Assets.xcassets in Resources */,
 				E4FB9BF51C7661B200FE4AD9 /* Sounds in Resources */,
 				E4FB9B941C765E0600FE4AD9 /* Main.storyboard in Resources */,
@@ -283,6 +300,7 @@
 				E4FB9B8E1C765E0600FE4AD9 /* MasterViewController.m in Sources */,
 				E4FB9B881C765E0600FE4AD9 /* main.m in Sources */,
 				E4FB9BF31C765F1600FE4AD9 /* SoundManager.m in Sources */,
+				E4FB9C371C77BAB400FE4AD9 /* PrettyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
