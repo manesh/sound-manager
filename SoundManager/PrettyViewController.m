@@ -105,6 +105,14 @@ static NSString * const reuseIdentifier = @"Cell";
     NSArray *components = [name componentsSeparatedByString:@"."];
     cell.soundName.text = components[0];
     
+    // show animation in the cell if the sound is currently playing
+    if ([[SoundManager sharedManager] isSoundPlaying:self.filenames[indexPath.row]]) {
+        [cell startPlayingAnimation];
+    }
+    else {
+        [cell stopPlayingAnimation];
+    }
+    
     return cell;
 }
 
@@ -117,12 +125,15 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
-    // immediately display the playback animation
     SoundCell *cell = (SoundCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    [cell startPlayingAnimation];
+    
+    // start animation if not already playing
+    if (![[SoundManager sharedManager] isSoundPlaying:self.filenames[indexPath.row]]) {
+        [cell startPlayingAnimation];
+    }
     
     [[SoundManager sharedManager] playSound:[self.filenames objectAtIndex:[indexPath row]] completion:^{
-        [cell stopPlayingAnimation];
+//        [cell stopPlayingAnimation];
     }];
 }
 

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *soundName;
 @property (weak, nonatomic) IBOutlet UIView *outerCircle;
 @property (weak, nonatomic) IBOutlet UIView *innerCircle;
+@property (weak, nonatomic) IBOutlet UIImageView *audioRainbow;
 
 /**
  Start playing an animation that indicates audio is playing.

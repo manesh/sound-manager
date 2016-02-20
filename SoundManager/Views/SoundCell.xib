@@ -27,21 +27,31 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio-0.png" translatesAutoresizingMaskIntoConstraints="NO" id="b4s-kz-jo1">
+                        <rect key="frame" x="28" y="8" width="44" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="XVF-Me-3RW"/>
+                            <constraint firstAttribute="height" constant="18" id="pBm-Mq-Me1"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="rdC-aZ-JfT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="0Uc-Ug-65j"/>
                 <constraint firstAttribute="bottom" secondItem="rdC-aZ-JfT" secondAttribute="bottom" constant="2" id="MBr-lD-ISi"/>
+                <constraint firstItem="b4s-kz-jo1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TtV-9s-rta"/>
                 <constraint firstItem="2vI-VN-FUS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X0h-Ab-dkl"/>
                 <constraint firstItem="rdC-aZ-JfT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="cbs-rq-d9C"/>
                 <constraint firstAttribute="bottom" secondItem="2vI-VN-FUS" secondAttribute="bottom" id="edK-jX-CS9"/>
                 <constraint firstAttribute="trailing" secondItem="rdC-aZ-JfT" secondAttribute="trailing" constant="2" id="es3-6g-ci8"/>
                 <constraint firstItem="2vI-VN-FUS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jQx-x2-cZA"/>
                 <constraint firstAttribute="trailing" secondItem="2vI-VN-FUS" secondAttribute="trailing" id="pZk-QV-NJF"/>
+                <constraint firstItem="b4s-kz-jo1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="taM-vj-yvh"/>
             </constraints>
             <size key="customSize" width="239" height="208"/>
             <connections>
+                <outlet property="audioRainbow" destination="b4s-kz-jo1" id="P2p-Op-7YX"/>
                 <outlet property="innerCircle" destination="rdC-aZ-JfT" id="tIz-7b-SkK"/>
                 <outlet property="outerCircle" destination="2vI-VN-FUS" id="6F9-4Z-uP5"/>
                 <outlet property="soundName" destination="8cd-AL-EJG" id="CXU-AR-vGP"/>
@@ -49,4 +59,7 @@
             <point key="canvasLocation" x="635" y="480"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="audio-0.png" width="89" height="35"/>
+    </resources>
 </document>

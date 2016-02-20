@@ -21,6 +21,11 @@
 		E4FB9C3F1C77C71E00FE4AD9 /* sound-manager-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */; };
 		E4FB9C461C77D6C000FE4AD9 /* SoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9C441C77D6C000FE4AD9 /* SoundCell.m */; };
 		E4FB9C471C77D6C000FE4AD9 /* SoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C451C77D6C000FE4AD9 /* SoundCell.xib */; };
+		E4FB9C4D1C780ADD00FE4AD9 /* audio-0.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C481C780ADD00FE4AD9 /* audio-0.png */; };
+		E4FB9C4E1C780ADD00FE4AD9 /* audio-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C491C780ADD00FE4AD9 /* audio-1.png */; };
+		E4FB9C4F1C780ADD00FE4AD9 /* audio-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C4A1C780ADD00FE4AD9 /* audio-2.png */; };
+		E4FB9C501C780ADD00FE4AD9 /* audio-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C4B1C780ADD00FE4AD9 /* audio-3.png */; };
+		E4FB9C511C780ADD00FE4AD9 /* audio-4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C4C1C780ADD00FE4AD9 /* audio-4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		E4FB9C431C77D6C000FE4AD9 /* SoundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundCell.h; path = Views/SoundCell.h; sourceTree = "<group>"; };
 		E4FB9C441C77D6C000FE4AD9 /* SoundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundCell.m; path = Views/SoundCell.m; sourceTree = "<group>"; };
 		E4FB9C451C77D6C000FE4AD9 /* SoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SoundCell.xib; path = Views/SoundCell.xib; sourceTree = "<group>"; };
+		E4FB9C481C780ADD00FE4AD9 /* audio-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-0.png"; sourceTree = "<group>"; };
+		E4FB9C491C780ADD00FE4AD9 /* audio-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-1.png"; sourceTree = "<group>"; };
+		E4FB9C4A1C780ADD00FE4AD9 /* audio-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-2.png"; sourceTree = "<group>"; };
+		E4FB9C4B1C780ADD00FE4AD9 /* audio-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-3.png"; sourceTree = "<group>"; };
+		E4FB9C4C1C780ADD00FE4AD9 /* audio-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-4.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +170,11 @@
 		E4FB9C3B1C77C66300FE4AD9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4FB9C481C780ADD00FE4AD9 /* audio-0.png */,
+				E4FB9C491C780ADD00FE4AD9 /* audio-1.png */,
+				E4FB9C4A1C780ADD00FE4AD9 /* audio-2.png */,
+				E4FB9C4B1C780ADD00FE4AD9 /* audio-3.png */,
+				E4FB9C4C1C780ADD00FE4AD9 /* audio-4.png */,
 				E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */,
 			);
 			path = images;
@@ -300,10 +315,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FB9B991C765E0600FE4AD9 /* LaunchScreen.storyboard in Resources */,
+				E4FB9C4D1C780ADD00FE4AD9 /* audio-0.png in Resources */,
 				E4FB9C3F1C77C71E00FE4AD9 /* sound-manager-logo@2x.png in Resources */,
 				E4FB9B961C765E0600FE4AD9 /* Assets.xcassets in Resources */,
+				E4FB9C511C780ADD00FE4AD9 /* audio-4.png in Resources */,
+				E4FB9C4F1C780ADD00FE4AD9 /* audio-2.png in Resources */,
 				E4FB9BF51C7661B200FE4AD9 /* Sounds in Resources */,
 				E4FB9B941C765E0600FE4AD9 /* Main.storyboard in Resources */,
+				E4FB9C4E1C780ADD00FE4AD9 /* audio-1.png in Resources */,
+				E4FB9C501C780ADD00FE4AD9 /* audio-3.png in Resources */,
 				E4FB9C471C77D6C000FE4AD9 /* SoundCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
