@@ -14,4 +14,14 @@
 @property (weak, nonatomic) IBOutlet UIView *outerCircle;
 @property (weak, nonatomic) IBOutlet UIView *innerCircle;
 
+/**
+ Start playing an animation that indicates audio is playing.
+ */
+- (void)startPlayingAnimation;
+
+/**
+ Stop playing an animation that indicates audio is playing.
+ */
+- (void)stopPlayingAnimation;
+
 @end

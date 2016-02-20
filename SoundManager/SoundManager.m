@@ -131,6 +131,7 @@
     NSArray *allPlayers = [self.audioPlayers allValues];
     for (AVAudioPlayer *player in allPlayers) {
         [player stop];
+        player.currentTime = 0.;
     }
 }
 
