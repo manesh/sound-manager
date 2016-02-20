@@ -10,6 +10,7 @@
 
 #import "MasterViewController.h"
 #import "SoundManager.h"
+#import "SoundCell.h"
 
 @interface PrettyViewController ()
 
@@ -25,27 +26,29 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     [super viewDidLoad];
     
+    // set styles
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Normal" style:UIBarButtonItemStylePlain target:self action:@selector(normalInterface:)];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-    
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sound-manager-logo"]];
     self.navigationItem.titleView = titleView;
-    
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     // red mage red
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:193./255 green:39./255 blue:45./255 alpha:1];
-    
     // red mage mid-red
     self.collectionView.backgroundColor = [UIColor colorWithRed:125./255 green:25./255 blue:29./255 alpha:1];
+    
+    // Register cell classes, setup flowLayout
+    [self.collectionView registerNib:[UINib nibWithNibName:@"SoundCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    flowLayout.minimumInteritemSpacing = 10.f;
+    flowLayout.itemSize = CGSizeMake(100., 100.);
+    flowLayout.estimatedItemSize = CGSizeMake(100., 100.);
+    flowLayout.sectionInset = UIEdgeInsetsMake(30., 30., 30., 30.);
     
     // load sounds if they are not loaded already
     if (![[SoundManager sharedManager] soundsPreloaded])
     {
         // let the manager know where to find the sound files we want loaded
         [[SoundManager sharedManager] setSoundsDirectory:@"Sounds"];
-        self.filenames = [[SoundManager sharedManager] sounds];
         
         [[SoundManager sharedManager] preloadSounds:^{
             // update cells to make interactive when preloading finishes
@@ -54,6 +57,8 @@ static NSString * const reuseIdentifier = @"Cell";
         }];
     }
     
+    self.filenames = [[SoundManager sharedManager] sounds];
+    [self.collectionView reloadData];
 }
 
 - (void)normalInterface:(UIBarButtonItem *)button
@@ -62,16 +67,6 @@ static NSString * const reuseIdentifier = @"Cell";
     MasterViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MasterViewController"];
     [self.navigationController setViewControllers:@[viewController] animated:NO];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -87,9 +82,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    SoundCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    // don't display the extension
+    NSString *name = self.filenames[indexPath.row];
+    NSArray *components = [name componentsSeparatedByString:@"."];
+    cell.soundName.text = components[0];
     
     return cell;
 }
@@ -124,5 +122,9 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+#pragma mark <UICollectionViewDelegateFlowLayout>
+
+
 
 @end

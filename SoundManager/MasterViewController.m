@@ -31,7 +31,6 @@
     {
         // let the manager know where to find the sound files we want loaded
         [[SoundManager sharedManager] setSoundsDirectory:@"Sounds"];
-        self.filenames = [[SoundManager sharedManager] sounds];
         
         [[SoundManager sharedManager] preloadSounds:^{
             // update cells to make interactive when preloading finishes
@@ -39,6 +38,8 @@
             [self.tableView reloadData];
         }];
     }
+    
+    self.filenames = [[SoundManager sharedManager] sounds];
 }
 
 #pragma mark - Table View

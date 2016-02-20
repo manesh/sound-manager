@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PrettyViewController : UICollectionViewController
+@interface PrettyViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 @end

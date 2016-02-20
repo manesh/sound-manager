@@ -19,6 +19,8 @@
 		E4FB9BF51C7661B200FE4AD9 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9BF41C7661B200FE4AD9 /* Sounds */; };
 		E4FB9C371C77BAB400FE4AD9 /* PrettyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */; };
 		E4FB9C3F1C77C71E00FE4AD9 /* sound-manager-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */; };
+		E4FB9C461C77D6C000FE4AD9 /* SoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB9C441C77D6C000FE4AD9 /* SoundCell.m */; };
+		E4FB9C471C77D6C000FE4AD9 /* SoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FB9C451C77D6C000FE4AD9 /* SoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,9 @@
 		E4FB9C351C77BAB400FE4AD9 /* PrettyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyViewController.h; sourceTree = "<group>"; };
 		E4FB9C361C77BAB400FE4AD9 /* PrettyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyViewController.m; sourceTree = "<group>"; };
 		E4FB9C3E1C77C71E00FE4AD9 /* sound-manager-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sound-manager-logo@2x.png"; sourceTree = "<group>"; };
+		E4FB9C431C77D6C000FE4AD9 /* SoundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundCell.h; path = Views/SoundCell.h; sourceTree = "<group>"; };
+		E4FB9C441C77D6C000FE4AD9 /* SoundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundCell.m; path = Views/SoundCell.m; sourceTree = "<group>"; };
+		E4FB9C451C77D6C000FE4AD9 /* SoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SoundCell.xib; path = Views/SoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +189,9 @@
 		E4FB9C421C77D61500FE4AD9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4FB9C431C77D6C000FE4AD9 /* SoundCell.h */,
+				E4FB9C441C77D6C000FE4AD9 /* SoundCell.m */,
+				E4FB9C451C77D6C000FE4AD9 /* SoundCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				E4FB9B961C765E0600FE4AD9 /* Assets.xcassets in Resources */,
 				E4FB9BF51C7661B200FE4AD9 /* Sounds in Resources */,
 				E4FB9B941C765E0600FE4AD9 /* Main.storyboard in Resources */,
+				E4FB9C471C77D6C000FE4AD9 /* SoundCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FB9B8B1C765E0600FE4AD9 /* AppDelegate.m in Sources */,
+				E4FB9C461C77D6C000FE4AD9 /* SoundCell.m in Sources */,
 				E4FB9B8E1C765E0600FE4AD9 /* MasterViewController.m in Sources */,
 				E4FB9B881C765E0600FE4AD9 /* main.m in Sources */,
 				E4FB9BF31C765F1600FE4AD9 /* SoundManager.m in Sources */,
